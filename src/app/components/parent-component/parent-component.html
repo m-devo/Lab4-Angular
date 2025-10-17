@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Parent</mat-card-title>
+    <mat-card-subtitle *ngIf="messageFromChild">
+      Message from Child: <strong>{{ messageFromChild }}</strong>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>Type here to send message to child.</p>
+    <mat-form-field appearance="outline" class="full-width-field">
+      <mat-label>Message for Child</mat-label>
+      <input matInput type="text" [(ngModel)]="userName">
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+
+    <app-child-component
+      [userName]="userName"
+      (messageEvent)="receiveMessage($event)">
+    </app-child-component>
+  </mat-card-content>
+</mat-card>
